@@ -46,21 +46,13 @@ module Motion
 
       @verticals.each do |options, formats|
         constraints += formats.map do |format|
-          NSLayoutConstraint.constraintsWithVisualFormat("V:#{format}", 
-            options:options || NSLayoutFormatAlignAllCenterX, 
-            metrics:@metrics, 
-            views:@subviews
-            )
+          NSLayoutConstraint.constraintsWithVisualFormat("V:#{format}", options:options, metrics:@metrics, views:@subviews)
         end
       end
 
       @horizontals.each do |options, formats|
         constraints += formats.map do |format|
-          NSLayoutConstraint.constraintsWithVisualFormat("H:#{format}", 
-            options:options || NSLayoutFormatAlignAllCenterY, 
-            metrics:@metrics, 
-            views:@subviews
-            )
+          NSLayoutConstraint.constraintsWithVisualFormat("H:#{format}", options:options, metrics:@metrics, views:@subviews)
         end
       end
 
