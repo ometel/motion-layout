@@ -41,18 +41,20 @@ module Motion
         subview.translatesAutoresizingMaskIntoConstraints = false
         @view.addSubview(subview)
       end
+      
+      views = @subviews.merge("superview" => @view)
 
       constraints = []
 
       @verticals.each do |options, formats|
         constraints += formats.map do |format|
-          NSLayoutConstraint.constraintsWithVisualFormat("V:#{format}", options:options, metrics:@metrics, views:@subviews)
+          NSLayoutConstraint.constraintsWithVisualFormat("V:#{format}", options:options, metrics:@metrics, views:views)
         end
       end
 
       @horizontals.each do |options, formats|
         constraints += formats.map do |format|
-          NSLayoutConstraint.constraintsWithVisualFormat("H:#{format}", options:options, metrics:@metrics, views:@subviews)
+          NSLayoutConstraint.constraintsWithVisualFormat("H:#{format}", options:options, metrics:@metrics, views:views)
         end
       end
 
